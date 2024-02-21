@@ -65,7 +65,7 @@ npm start
 - Tailwind CSS
 - Local Storage
 - OpenWeatherMap API
-- Unit Testing Framework (e.g., Jest, Enzyme)
+- Unit Testing Framework ( Jest)
 
 ## Contributors
 
