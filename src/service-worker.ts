@@ -4,3 +4,5 @@ declare const self: ServiceWorkerGlobalScope;
 
 // Precache assets using Workbox
 precacheAndRoute(self.__WB_MANIFEST || []);
+
+

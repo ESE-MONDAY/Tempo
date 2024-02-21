@@ -42,8 +42,6 @@ const Sidebar: React.FC = () => {
         },
         (error: GeolocationPositionError) => {
           
-
-
           setError(error.message);
         }
       );

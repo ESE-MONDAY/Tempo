@@ -24,7 +24,7 @@ const LargestCityWeatherInfo: React.FC<CityWeatherInfoProps> = ({ cityInfo }) =>
   const dispatch = useDispatch()
   const navigate = useNavigate(); 
   const { cities, loading } = useSelector((state: RootState) => state.favouriteCity);
-  const baseUrl = 'https://openweathermap.org/img/wn/';
+  const baseUrl = 'https://cors-anywhere.herokuapp.com/https://openweathermap.org/img/wn/';
   const iconUrl = `${baseUrl}${cityInfo.icon}@2x.png`;
   
  

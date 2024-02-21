@@ -19,7 +19,7 @@ export interface WeatherInfo {
 const apiKey = 'eselite';
 
 const getCoordinates = async (cityName: string): Promise<City | null> => {
-  const geoNamesUrl = `https://api.geonames.org/searchJSON?q=${cityName}&maxRows=1&username=${apiKey}`;
+  const geoNamesUrl = `https://cors-anywhere.herokuapp.com/https://api.geonames.org/searchJSON?q=${cityName}&maxRows=1&username=${apiKey}`;
 
   try {
     const response = await axios.get(geoNamesUrl);
@@ -42,7 +42,7 @@ const getCoordinates = async (cityName: string): Promise<City | null> => {
 
 const getWeatherInfo = async (latitude: number, longitude: number): Promise<WeatherInfo | null> => {
   const weatherApiKey = '1457b5f7f9dd52eb99023f987eca1c3f';
-  const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}&units=metric`;
+  const weatherUrl = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}&units=metric`;
 
   try {
     const response = await axios.get(weatherUrl);
