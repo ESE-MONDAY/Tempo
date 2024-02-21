@@ -19,7 +19,7 @@ const defaultLocation = { longitude: 3.3686, latitude: 6.5143 }
 
 export const fetchWeatherInfo = async (userLocation: Coordinates): Promise<WeatherInfo> => {
   try {
-    const cityResponse = await axios.get(`http://api.geonames.org/findNearbyPlaceNameJSON?lat=${userLocation.latitude}&lng=${userLocation.longitude}&username=eselite`);
+    const cityResponse = await axios.get(`https://api.geonames.org/findNearbyPlaceNameJSON?lat=${userLocation.latitude}&lng=${userLocation.longitude}&username=eselite`);
     const cityData = cityResponse.data;
     const city = cityData?.geonames[0]?.adminName1;
     const weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=1457b5f7f9dd52eb99023f987eca1c3f&units=metric`);

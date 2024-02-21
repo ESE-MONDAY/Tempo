@@ -19,7 +19,7 @@ export interface WeatherInfo {
 const apiKey = 'eselite';
 
 const getCoordinates = async (cityName: string): Promise<City | null> => {
-  const geoNamesUrl = `http://api.geonames.org/searchJSON?q=${cityName}&maxRows=1&username=${apiKey}`;
+  const geoNamesUrl = `https://api.geonames.org/searchJSON?q=${cityName}&maxRows=1&username=${apiKey}`;
 
   try {
     const response = await axios.get(geoNamesUrl);
