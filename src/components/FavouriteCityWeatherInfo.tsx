@@ -27,7 +27,7 @@ const FavouriteCityWeatherInfo = () => {
         <>
          <div className='flex justify-between mt-8 '>
           <h2 className='font-semibold text-2xl'>Favourite Cities </h2>
-          <button className='text-sm text-white bg-red-500 px-2 py-1 rounded-md font-medium'  onClick={handleClearFavorites}>Delete</button>
+          <button className='text-sm text-white bg-red-500 px-2 py-1 rounded-md font-medium'  onClick={handleClearFavorites}>Clear List</button>
           </div>
     
      
