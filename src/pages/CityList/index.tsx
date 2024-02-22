@@ -14,7 +14,7 @@ const CityList = () => {
    
     const timeoutId = setTimeout(() => {
       dispatch(fetchUserWeatherData() as any);
-    },  1000);
+    }, 5 * 60 * 1000);
 
     return () => clearTimeout(timeoutId);
   }, [dispatch]);
