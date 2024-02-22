@@ -69,7 +69,7 @@ export const clearLargestCitiesFromLocalStorage = (): void => {
 
 const fetchWeatherInfo = async (latitude: number, longitude: number): Promise<WeatherInfo> => {
   try {
-    const apiKey = '1457b5f7f9dd52eb99023f987eca1c3f'; 
+    const apiKey = String(process.env.REACT_APP_WEATHER_KEY) 
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
     const temperature = response.data.main.temp;
     const description = response.data.weather[0].description;
@@ -90,7 +90,7 @@ const fetchLargestCities = async (): Promise<City[]> => {
     population: '>1000000',
     orderby: 'population',
     maxRows: 1000,
-    username: 'eselite',
+    username: 'eselite'
   };
 
   try {

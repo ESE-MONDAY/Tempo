@@ -29,9 +29,9 @@ export const fetchUserWeatherInfo = async (): Promise<WeatherInfo> => {
     );
     const cityData = cityResponse.data;
     const city = cityData?.geonames[0]?.adminName1;
-
+    const apiKey = String(process.env.REACT_APP_WEATHER_KEY) 
     const weatherResponse = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=1457b5f7f9dd52eb99023f987eca1c3f&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${apiKey}&units=metric`
     );
     const temperature = weatherResponse.data?.main?.temp;
     const weatherIcon = weatherResponse.data?.weather[0]?.icon;

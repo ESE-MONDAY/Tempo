@@ -41,7 +41,7 @@ const getCoordinates = async (cityName: string): Promise<City | null> => {
 };
 
 const getWeatherInfo = async (latitude: number, longitude: number): Promise<WeatherInfo | null> => {
-  const weatherApiKey = '1457b5f7f9dd52eb99023f987eca1c3f';
+  const weatherApiKey = String(process.env.REACT_APP_WEATHER_KEY) 
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}&units=metric`;
 
   try {
