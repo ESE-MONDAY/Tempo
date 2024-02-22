@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import CitiesWeatherInfo from '../../components/CitiesWeatherInfo';
 import FavouriteCityWeatherInfo from '../../components/FavouriteCityWeatherInfo';
 import { fetchUserWeatherData } from '../../states/UserWeatherData';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../states/store';
 
 
 
@@ -19,9 +20,12 @@ const CityList = () => {
     return () => clearTimeout(timeoutId);
   }, [dispatch]);
 
+  const {currentTime} = useSelector((state: RootState) => state.weather )
+
   return (
     <div className='w-full flex-col sm:flex-row gap-4 h-auto'>
       <div className=' p-4 overflow-auto lg:px-16'>
+        {currentTime}
         <h1>Tempo - Get Weather forecast for your city</h1>
           <FavouriteCityWeatherInfo />
           <CitiesWeatherInfo />
