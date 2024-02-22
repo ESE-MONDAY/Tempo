@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.ts')
+    navigator.serviceWorker.register('../service-worker.ts')
       .then(registration => {
         console.log('Service Worker registered:', registration);
       })
