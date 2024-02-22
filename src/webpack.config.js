@@ -3,7 +3,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 module.exports = {
   plugins: [
     new WorkboxPlugin.GenerateSW({
-      swDest: 'service-worker.js',
+      swDest: '/src/serviceWorker.ts',
       clientsClaim: true,
       skipWaiting: true,
     }),

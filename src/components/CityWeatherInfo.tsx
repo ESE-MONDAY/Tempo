@@ -48,7 +48,7 @@ const CityWeatherInfo: React.FC<CityWeatherInfoProps> = ({ cityInfo }) => {
  
  
   return (
-    <div className='rounded-lg bg-purple-500 p-4 min-w-[200px] mt-8 text-white'>
+    <div className='rounded-lg bg-purple-500 p-4  mt-8 text-white'>
       <div className='flex justify-end items-center'>
         <button onClick={handleAddFavorite}><GoHeartFill className={`${isCityLiked(cityInfo.city, cities)  ? "text-red-500" : "text-white"} text-xl `}/></button>
       </div>

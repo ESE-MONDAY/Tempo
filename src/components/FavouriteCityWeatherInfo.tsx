@@ -31,10 +31,10 @@ const FavouriteCityWeatherInfo = () => {
           </div>
     
      
-          <div className='flex flex-wrap gap-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4'>
             {
                cities.map((cityWeather) => (
-                <div key={cityWeather.city} className=''>
+                <div key={cityWeather.city} className='col-span-1'>
                   <CityWeatherInfo cityInfo={cityWeather} />
                 </div>
               ))}

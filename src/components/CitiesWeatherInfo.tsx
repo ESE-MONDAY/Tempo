@@ -34,9 +34,9 @@ const CitiesWeatherInfo = () => {
           <h2 className='font-semibold text-2xl'>Top Cities </h2>
           <button className='text-sm text-white bg-red-500 px-2 py-1 rounded-md font-medium'  onClick={handleClearLargestCities}>Delete</button>
           </div>      
-                  <div className=' flex flex-wrap gap-4'>
+                  <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4'>
                         {sortedCitiesWithWeather.map((cityWeather) =>(
-                            <div key={cityWeather.city} className=''>
+                            <div key={cityWeather.city} className='col-span-1'>
                                 <LargestCityWeatherInfo  cityInfo={cityWeather}/>
                             </div>
                         ))}
