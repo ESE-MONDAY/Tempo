@@ -11,6 +11,7 @@ const CityDetails = () => {
   const { cityName } = useParams();
   const [weatherData, setWeatherData] = useState<any | null>(null);
   const [newNote, setNewNote] = useState('');
+  const [ showForm, setShowForm] = useState(false)
 
   const {citiesWithWeather, error} = useSelector((state: RootState) => state.largestCity)
 
@@ -38,6 +39,7 @@ const CityDetails = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setShowForm(false)
     if (cityName) {
       dispatch(editWeatherDataNoteAsync({ cityName, newNote }) as any).then(() => {
         setWeatherData((prevData: any) => ({
@@ -50,19 +52,67 @@ const CityDetails = () => {
 
 
   return (
-    <div className='flex flex-col w-full '> 
+    <div className='flex flex-col w-full sm:px-16 p-4 '> 
       <div className='w-full mx-auto flex flex-col sm:flex-row gap-4 flex-grow'> 
       {weatherData ? (
         <>
-          <h1>{cityName} Details</h1>
-          <p>Description: {weatherData.description}</p>
-          <p>Temperature: {weatherData.temperature}</p>
-          <p>Note:{weatherData.note} </p>
-          <form onSubmit={handleSubmit}>
-              <textarea value={newNote} onChange={handleNoteChange} rows={4} cols={50} />
-              <button type='submit'>Save Note</button>
-            </form>
-            <button onClick={() => handleDelete(cityName as string )}>Delete</button>
+          
+          <div className="flex flex-col w-full">
+        <h1 className="text-3xl font-bold mb-4">{cityName} Details</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="flex flex-col">
+            <p className="text-lg font-semibold">Description:</p>
+            <p className="">{weatherData.description}</p>
+          </div>
+          <div className="flex flex-col">
+            <p className="text-lg font-semibold">Temperature:</p>
+            <p>{weatherData.temperature}</p>
+          </div>
+          
+          {weatherData.note ? (
+            <div className="flex flex-col">
+              <div className='flex gap-4'> 
+              <p className="text-lg font-semibold">Note:</p>
+              <button className='bg-red-500 text-white rounded-md px-4 py-2'  onClick={() => setShowForm(true)}>Edit Note </button>
+              <button className='bg-red-500 text-white rounded-md px-4 py-2' onClick={() => handleDelete(cityName as string )}>Delete</button>
+              
+              </div>
+              <p>{weatherData.note}</p>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowForm(true)}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg max-w-[100px]"
+            >
+              Add Note
+            </button>
+          )}
+        </div>
+        {showForm && (
+            
+            <form onSubmit={handleSubmit} className="mt-6">
+            <textarea
+              value={newNote}
+              onChange={handleNoteChange}
+              rows={4}
+              className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:border-blue-500"
+              placeholder="Add a note..."
+            />
+            <div className="flex justify-end mt-4">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg mr-2"
+              >
+                Save Note
+              </button>
+             
+            </div>
+          </form>
+
+        )}
+      
+           
+            </div>
         </>
       ) : (
         <p>{error}</p>
