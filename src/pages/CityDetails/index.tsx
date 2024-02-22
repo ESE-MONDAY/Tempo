@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../states/store';
 import { useParams } from 'react-router-dom';
 import { editWeatherDataNoteAsync, deleteWeatherDataNoteAsync } from '../../states/LargestCitySlice';
+import { FaFilePen, FaTrash } from "react-icons/fa6";
 
 
 
@@ -73,8 +74,8 @@ const CityDetails = () => {
             <div className="flex flex-col">
               <div className='flex gap-4'> 
               <p className="text-lg font-semibold">Note:</p>
-              <button className='bg-red-500 text-white rounded-md px-4 py-2'  onClick={() => setShowForm(true)}>Edit Note </button>
-              <button className='bg-red-500 text-white rounded-md px-4 py-2' onClick={() => handleDelete(cityName as string )}>Delete</button>
+              <button className='bg-red-500 text-white rounded-md px-4 py-2'  onClick={() => setShowForm(true)}><FaFilePen /> </button>
+              <button className='bg-red-500 text-white rounded-md px-4 py-2' onClick={() => handleDelete(cityName as string )}><FaTrash /></button>
               
               </div>
               <p>{weatherData.note}</p>

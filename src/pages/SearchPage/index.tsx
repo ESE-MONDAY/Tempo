@@ -1,5 +1,5 @@
 import React, { useEffect} from 'react';
-import Footer from '../../components/shared/Footer';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../states/store';
 import { useParams } from 'react-router-dom';
@@ -26,22 +26,25 @@ const SearchPage = () => {
 
 
   return (
-    <div className='flex flex-col min-h-screen w-full max-w-[1600px] '> 
-      <div className='w-full mx-auto flex flex-col sm:flex-row gap-4 flex-grow'> 
-      {weatherData ? (
-        <>
-          <h1>{cityName} Details</h1>
-          <p>Description: {weatherData.description}</p>
-          <p>Temperature: {weatherData.temperature}</p>
-          
-        </>
-      ) : (
-        <p>{error}</p>
-      )}
-        
+  
+<div className='flex flex-col flex-grow w-full p-4 lg:px-16 rounded-lg '>
+  <div className='w-full mx-auto flex flex-col sm:flex-row gap-4 flex-grow'>
+    {weatherData ? (
+      <div className="flex flex-col">
+        <h1 className="text-2xl font-bold mb-2">{cityName} Details</h1>
+        <div className="bg-white p-4 rounded-lg shadow-md">
+          <p className="text-base mb-2">Description: {weatherData.description}</p>
+          <p className="text-base">Temperature: {weatherData.temperature}</p>
+        </div>
       </div>
-      <Footer />
-    </div>
+    ) : (
+      <p className="text-base text-red-600">{error}</p>
+    )}
+  </div>
+</div>
+
+   
+
   );
 };
 

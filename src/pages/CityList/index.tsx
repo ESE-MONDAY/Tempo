@@ -2,15 +2,13 @@ import React, {useEffect} from 'react';
 import CitiesWeatherInfo from '../../components/CitiesWeatherInfo';
 import FavouriteCityWeatherInfo from '../../components/FavouriteCityWeatherInfo';
 import { fetchUserWeatherData } from '../../states/UserWeatherData';
-import { useDispatch } from 'react-redux';
-
-
-
-
+import { useDispatch} from 'react-redux';
 
 
 const CityList = () => {
   const dispatch = useDispatch();
+
+
   useEffect(() => {
    
     const timeoutId = setTimeout(() => {

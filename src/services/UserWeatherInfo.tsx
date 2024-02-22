@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 interface Coordinates {
   latitude: number;
   longitude: number;
@@ -13,8 +14,8 @@ export interface WeatherInfo {
 }
 
 const WEATHER_DATA_KEY = 'userWeatherData';
-
 export const fetchUserWeatherInfo = async (): Promise<WeatherInfo> => {
+
   try {
     // Ask for the user's location
     const position = await getCurrentPosition();
@@ -38,8 +39,11 @@ export const fetchUserWeatherInfo = async (): Promise<WeatherInfo> => {
 
     const weatherInfo: WeatherInfo = { city, temperature, currentTime, weatherIcon };
 
-    // Save weather data to local storage, overwriting existing data
+
     saveWeatherInfoToLocalStorage(weatherInfo);
+    if (city) {
+      window.location.href = `/search/${city}`;
+    }
 
     return weatherInfo;
   } catch (error) {
@@ -47,19 +51,17 @@ export const fetchUserWeatherInfo = async (): Promise<WeatherInfo> => {
   }
 };
 
-// Function to get current position using Geolocation API
 const getCurrentPosition = (): Promise<GeolocationPosition> => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
 
-// Function to save weather information to local storage
+
 const saveWeatherInfoToLocalStorage = (weatherInfo: WeatherInfo): void => {
   localStorage.setItem(WEATHER_DATA_KEY, JSON.stringify(weatherInfo));
 };
 
-// Function to retrieve weather information from local storage
 export const getWeatherInfoFromLocalStorage = (): WeatherInfo | null => {
   const weatherInfoJSON = localStorage.getItem(WEATHER_DATA_KEY);
   return weatherInfoJSON ? JSON.parse(weatherInfoJSON) : null;
