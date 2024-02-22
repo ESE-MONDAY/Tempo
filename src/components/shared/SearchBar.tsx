@@ -14,7 +14,7 @@ const SearchBar = () => {
     setQuery(query);
 
     try {
-      const response = await axios.get('http://api.geonames.org/searchJSON', {
+      const response = await axios.get('https://secure.geonames.org/searchJSON', {
         params: {
           q: query,
           maxRows: 10, 
@@ -52,7 +52,7 @@ const SearchBar = () => {
             />
               <RiSearchLine className="text-gray-400" size={16} />
     </form>
-    <ul className='mt-4 flex flex-col gap-2'>
+    <ul className='absolute bg-white mt-4 flex flex-col gap-2'>
         {suggestions.map((suggestion:any) => (
           <li className='border-b-[1px] border-b-red-400' key={suggestion.geonameId}>
              <button onClick={() => handleClick(suggestion.name)}>{suggestion.name}</button>
