@@ -69,7 +69,7 @@ export const clearLargestCitiesFromLocalStorage = (): void => {
 const fetchWeatherInfo = async (latitude: number, longitude: number): Promise<WeatherInfo> => {
   try {
     const apiKey = '1457b5f7f9dd52eb99023f987eca1c3f'; 
-    const response = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
+    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
     const temperature = response.data.main.temp;
     const description = response.data.weather[0].description;
     const icon = response.data.weather[0].icon;
@@ -83,7 +83,7 @@ const fetchWeatherInfo = async (latitude: number, longitude: number): Promise<We
 };
 
 const fetchLargestCities = async (): Promise<City[]> => {
-  const url = 'https://cors-anywhere.herokuapp.com/https://api.geonames.org/searchJSON';
+  const url = 'https://secure.geonames.org/searchJSON';
   const params = {
     featureCode: 'PPL',
     population: '>1000000',
