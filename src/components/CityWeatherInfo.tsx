@@ -1,9 +1,10 @@
 import React from 'react';
 import { GoHeartFill } from 'react-icons/go';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavoriteCity, clearFavoriteCities, removeFavoriteCity } from '../states/FavouriteCity';
+import { addFavoriteCity, removeFavoriteCity } from '../states/FavouriteCity';
 import { RootState } from '../states/store';
 import { useNavigate } from 'react-router-dom'; 
+
 
 
 interface CityWeatherInfoProps {
@@ -22,7 +23,7 @@ interface CityWeatherInfoProps {
 const CityWeatherInfo: React.FC<CityWeatherInfoProps> = ({ cityInfo }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate(); 
-  const { cities, loading } = useSelector((state: RootState) => state.favouriteCity);
+  const { cities } = useSelector((state: RootState) => state.favouriteCity);
   const baseUrl = 'https://openweathermap.org/img/wn/';
   const iconUrl = `${baseUrl}${cityInfo.icon}@2x.png`;
   
@@ -45,9 +46,7 @@ const CityWeatherInfo: React.FC<CityWeatherInfoProps> = ({ cityInfo }) => {
     navigate(`/city-details/${cityInfo.city}`);
   };
  
-  const handleClearFavorites = () => {
-    dispatch(clearFavoriteCities());
-  };
+ 
   return (
     <div className='rounded-lg bg-purple-500 p-4 min-w-[200px] mt-8 text-white'>
       <div className='flex justify-end items-center'>

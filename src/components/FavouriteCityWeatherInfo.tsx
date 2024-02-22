@@ -9,7 +9,7 @@ const FavouriteCityWeatherInfo = () => {
   
 
 
-  const { cities, loading } = useSelector((state: RootState) => {
+  const { cities } = useSelector((state: RootState) => {
     const sortedCities = state.favouriteCity.cities.slice().sort((a, b) => a.city.localeCompare(b.city));
     return {
       cities: sortedCities,
@@ -25,8 +25,12 @@ const FavouriteCityWeatherInfo = () => {
     <div>
       {cities.length > 0 && (
         <>
-         <h3>Here are a list of your favourite cities</h3>
-         <button className='text-sm text-red-500 font-medium'  onClick={handleClearFavorites}>Delete</button>
+         <div className='flex justify-between mt-8 '>
+          <h2 className='font-semibold text-2xl'>Favourite Cities </h2>
+          <button className='text-sm text-white bg-red-500 px-2 py-1 rounded-md font-medium'  onClick={handleClearFavorites}>Delete</button>
+          </div>
+    
+     
           <div className='flex flex-wrap gap-4'>
             {
                cities.map((cityWeather) => (

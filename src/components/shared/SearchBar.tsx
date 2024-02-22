@@ -4,12 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 
 
-
-interface SearchBarProps {
-  onSearch: (query: string) => void;
-}
-
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar = () => {
   const navigate = useNavigate()
   const [query, setQuery] = useState<string>('');
   const [suggestions, setSuggestions] = useState([]);
@@ -47,13 +42,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex items-center border border-gray-300  rounded-full px-4 ">
+      <form onSubmit={handleSubmit} className="flex items-center border border-purple-400  rounded-full px-4 ">
             <input
               type="text"
               value={query}
               onChange={handleInputChange}
-              placeholder="Search..."
-              className="px-2 py-1 mr-2 flex-grow focus:outline-none bg-transparent"
+              placeholder="Lagos, NG"
+              className="px-2 py-2 mr-2 flex-grow focus:outline-none bg-transparent"
             />
               <RiSearchLine className="text-gray-400" size={16} />
     </form>

@@ -1,13 +1,11 @@
-// weatherSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchWeatherInfo } from '../services/UserWeatherInfo';
-import toast from 'react-hot-toast';
+import { fetchUserWeatherInfo } from '../services/UserWeatherInfo';
 
 interface WeatherInfo {
   city: string | null;
   temperature: number | null;
   currentTime: string | null;
-  error: string | null | object | undefined; 
+  error: string | null | object | undefined;
   weatherIcon: string;
 }
 
@@ -19,16 +17,14 @@ const initialState: WeatherInfo = {
   weatherIcon: ""
 };
 
-export const fetchWeatherData = createAsyncThunk(
-  'weather/fetchWeatherData',
-  async (userLocation: { latitude: number; longitude: number }) => {
+export const fetchUserWeatherData = createAsyncThunk(
+  'weather/userWeather',
+  async () => {
     try {
-      const weatherInfo = await fetchWeatherInfo(userLocation);
-      toast.success("Info fetched successfully");
+      const weatherInfo = await fetchUserWeatherInfo();
       return weatherInfo;
     } catch (error) {
-      // Throw the error to trigger automatic rejection and dispatch
-      throw error;
+      throw error; 
     }
   }
 );
@@ -39,17 +35,17 @@ export const weatherSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchWeatherData.pending, state => {
+      .addCase(fetchUserWeatherData.pending, state => {
         state.error = null;
       })
-      .addCase(fetchWeatherData.fulfilled, (state, action) => {
+      .addCase(fetchUserWeatherData.fulfilled, (state, action) => {
         state.city = action.payload.city;
         state.temperature = action.payload.temperature;
         state.currentTime = action.payload.currentTime;
         state.weatherIcon = action.payload.weatherIcon;
         state.error = null;
       })
-      .addCase(fetchWeatherData.rejected, (state, action) => {
+      .addCase(fetchUserWeatherData.rejected, (state, action) => {
         state.error = action.payload || 'An error occurred while fetching weather information';
       });
   },

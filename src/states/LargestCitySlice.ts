@@ -59,7 +59,7 @@ const initialState: WeatherState = {
 export const clearLargestCities = createAsyncThunk(
   'weather/clearLargestCities',
   async () => {
-    clearLargestCities()
+    clearLargestCitiesFromLocalStorage()
     return [];
   }
 );

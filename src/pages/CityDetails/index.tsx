@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import Footer from '../../components/shared/Footer';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../states/store';
 import { useParams } from 'react-router-dom';
@@ -51,7 +50,7 @@ const CityDetails = () => {
 
 
   return (
-    <div className='flex flex-col min-h-screen w-full max-w-[1600px] '> 
+    <div className='flex flex-col w-full '> 
       <div className='w-full mx-auto flex flex-col sm:flex-row gap-4 flex-grow'> 
       {weatherData ? (
         <>
@@ -70,7 +69,7 @@ const CityDetails = () => {
       )}
         
       </div>
-      <Footer />
+
     </div>
   );
 };

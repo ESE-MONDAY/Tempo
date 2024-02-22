@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import Footer from '../../components/shared/Footer';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../states/store';
@@ -9,7 +9,7 @@ import { fetchCityWeatherData } from '../../states/FetchWeatherInfo';
 const SearchPage = () => {
   const { cityName } = useParams();
   const dispatch = useDispatch()
-  const {loading, weatherData,error} = useSelector((state:RootState) => state.cityWeather)
+  const { weatherData,error} = useSelector((state:RootState) => state.cityWeather)
  
   
 

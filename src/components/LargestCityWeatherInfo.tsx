@@ -1,10 +1,10 @@
 import React from 'react';
 import { GoHeartFill } from 'react-icons/go';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavoriteCity, clearFavoriteCities, removeFavoriteCity } from '../states/FavouriteCity';
+import { addFavoriteCity, removeFavoriteCity } from '../states/FavouriteCity';
 import { RootState } from '../states/store';
 import { useNavigate } from 'react-router-dom'; 
-import { deleteCityWeatherData, clearLargestCities } from '../states/LargestCitySlice';
+import { deleteCityWeatherData } from '../states/LargestCitySlice';
 
 
 interface CityWeatherInfoProps {
@@ -23,7 +23,7 @@ interface CityWeatherInfoProps {
 const LargestCityWeatherInfo: React.FC<CityWeatherInfoProps> = ({ cityInfo }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate(); 
-  const { cities, loading } = useSelector((state: RootState) => state.favouriteCity);
+  const { cities} = useSelector((state: RootState) => state.favouriteCity);
   const baseUrl = 'https://openweathermap.org/img/wn/';
   const iconUrl = `${baseUrl}${cityInfo.icon}@2x.png`;
   

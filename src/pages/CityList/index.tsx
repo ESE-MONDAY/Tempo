@@ -1,20 +1,27 @@
-import React from 'react';
-import Sidebar from '../../components/Sidebar';
+import React, {useEffect} from 'react';
 import CitiesWeatherInfo from '../../components/CitiesWeatherInfo';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../states/store';
 import FavouriteCityWeatherInfo from '../../components/FavouriteCityWeatherInfo';
+import { fetchUserWeatherData } from '../../states/UserWeatherData';
+import { useDispatch } from 'react-redux';
+
+
 
 
 
 const CityList = () => {
-  
-  const { loading,error,cities} = useSelector((state: RootState) => state.favouriteCity)
+  const dispatch = useDispatch();
+  useEffect(() => {
+   
+    const timeoutId = setTimeout(() => {
+      dispatch(fetchUserWeatherData() as any);
+    },  1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [dispatch]);
 
   return (
-    <div className='w-full max-w-[1600px] mx-auto flex flex-col sm:flex-row gap-4 h-screen'>
-      <Sidebar/>
-      <div className='flex-grow p-4 overflow-auto'>
+    <div className='w-full flex-col sm:flex-row gap-4 h-auto'>
+      <div className=' p-4 overflow-auto lg:px-16'>
         <h1>Tempo - Get Weather forecast for your city</h1>
           <FavouriteCityWeatherInfo />
           <CitiesWeatherInfo />

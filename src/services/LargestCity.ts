@@ -24,6 +24,7 @@ export interface WeatherData {
 }
 
 const WEATHER_DATA_KEY = 'weatherData';
+// const apiKey = process.env.REACT_APP_WEATHER_API_KEY
 
 export const getWeatherDataFromLocalStorage = (): WeatherData[] => {
   const weatherDataJSON = localStorage.getItem(WEATHER_DATA_KEY);
@@ -122,10 +123,8 @@ export const fetchLargestCitiesWithWeather = async (): Promise<WeatherData[]> =>
           const existingData = getWeatherDataFromLocalStorage();
           const isExisting = existingData.some((data) => data.city === city.name);
           if (!isExisting) {
-            return weatherData;
-            
+            return weatherData;  
           } else {
-            
             return existingData.find((data) => data.city === city.name) || null;
           }
         })
