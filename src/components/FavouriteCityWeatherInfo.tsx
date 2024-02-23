@@ -26,8 +26,8 @@ const FavouriteCityWeatherInfo = () => {
       {cities.length > 0 && (
         <>
          <div className='flex justify-between mt-8 '>
-          <h2 className='font-semibold text-2xl'>Favourite Cities </h2>
-          <button className='text-sm text-white bg-red-500 px-2 py-1 rounded-md font-medium'  onClick={handleClearFavorites}>Clear List</button>
+          <h2 className='font-semibold text-2xl text-gray-700'>Favourite Cities </h2>
+          <button className='text-sm text-white bg-red-500  hover:bg-red-600 px-2 py-1 rounded-md font-medium'  onClick={handleClearFavorites}>Clear List</button>
           </div>
     
      

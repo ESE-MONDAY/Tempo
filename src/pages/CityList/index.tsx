@@ -20,8 +20,8 @@ const CityList = () => {
 
 
   return (
-    <div className='w-full flex-col sm:flex-row gap-4 h-auto'>
-      <div className=' p-4 overflow-auto lg:px-16'>
+    <div className='w-full flex-col sm:flex-row gap-4 h-auto bg-blue-200 '>
+      <div className=' p-4 overflow-auto lg:px-16 max-w-[1200px] mx-auto'>
         <h1>Tempo - Get Weather forecast for your city</h1>
           <FavouriteCityWeatherInfo />
           <CitiesWeatherInfo />

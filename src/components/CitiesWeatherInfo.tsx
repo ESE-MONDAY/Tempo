@@ -31,8 +31,8 @@ const CitiesWeatherInfo = () => {
         sortedCitiesWithWeather.length > 0 &&(
           <>
           <div className='flex justify-between'>
-          <h2 className='font-semibold text-2xl'>Top Cities </h2>
-          <button className='text-sm text-white bg-red-500 px-2 py-1 rounded-md font-medium'  onClick={handleClearLargestCities}>Clear List</button>
+          <h2 className='font-semibold text-2xl text-gray-700'>Top Cities </h2>
+          <button className='text-sm text-white bg-red-500 hover:bg-red-600 px-2 py-1 rounded-md font-medium'  onClick={handleClearLargestCities}>Clear List</button>
           </div>      
                   <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4'>
                         {sortedCitiesWithWeather.map((cityWeather) =>(

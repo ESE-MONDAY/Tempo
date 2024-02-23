@@ -7,7 +7,7 @@ const Navbar = () => {
       {/* <div className='h-10 bg-red-500  w-full z-40 '>
         <img alt='Header' src='/header-bg.jpg' height={100} width={100} className='w-full h-40'/>
       </div> */}
-    <div className="flex justify-between gap-4 items-center">
+    <div className="flex justify-between gap-4 items-center max-w-[800px] mx-auto">
     
       {/* Logo */}
       <a href="/" className="text-black text-lg font-bold">Tempo</a>

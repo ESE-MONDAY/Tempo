@@ -34,6 +34,7 @@ class LineChartComponent extends PureComponent<LineChartComponentProps> {
           <Legend />
           <Line type="monotone" dataKey="humidity" stroke="#8884d8" activeDot={{ r: 16 }} />
           <Line type="monotone" dataKey="temp" stroke="#82ca9d" />
+          
         </LineChart>
       </ResponsiveContainer>
     );
