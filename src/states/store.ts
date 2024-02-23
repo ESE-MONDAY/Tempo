@@ -3,13 +3,15 @@ import  weatherReducer  from './UserWeatherData';
 import largestCityReducer from './LargestCitySlice';
 import FavouriteCityReducer from './FavouriteCity';
 import cityWeatherSliceReducer from './FetchWeatherInfo';
+import cityWeatherForecastReducer from './WeatherForecast'
 
 export const store = configureStore({
   reducer: {
     weather: weatherReducer,
     largestCity: largestCityReducer,
     favouriteCity: FavouriteCityReducer,
-    cityWeather: cityWeatherSliceReducer
+    cityWeather: cityWeatherSliceReducer,
+    cityWeatherForecast : cityWeatherForecastReducer 
     
   },
 });
