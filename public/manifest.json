@@ -1,0 +1,37 @@
+{
+    "short_name" : "Tempo Weather App",
+    "name": "Tempo - Fetch Weather Reports on the go",
+    "icons" : [
+        {
+            "src": "./android-chrome-192x192.png",
+            "type": "image/png",
+            "size": "192x192",
+            "purpose": "maskable"
+        },
+        {
+            "src": "./android-chrome-512x512.png",
+            "type": "image/png",
+            "size": "512x512",
+            "purpose": "any"
+        },
+        {
+            "src": "./favicon-32x32.png",
+            "type": "image/png",
+            "size": "32x32"
+        },
+        {
+            "src": "./favicon-16x16.png",
+            "type": "image/png",
+            "size": "16x16"
+        },
+        {
+            "src": "./apple-touch-icon.png",
+            "type": "image/png",
+            "size": "16x16"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}

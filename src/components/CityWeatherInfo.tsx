@@ -50,7 +50,7 @@ const CityWeatherInfo: React.FC<CityWeatherInfoProps> = ({ cityInfo }) => {
   return (
     <div className='rounded-lg bg-gray-700 p-4  mt-8 text-gray-100'>
       <div className='flex justify-end items-center'>
-        <button onClick={handleAddFavorite}><GoHeartFill className={`${isCityLiked(cityInfo.city, cities)  ? "text-red-500" : "text-gray-100"} text-xl `}/></button>
+        <button onClick={handleAddFavorite}><GoHeartFill className={`${isCityLiked(cityInfo.city, cities)  ? "text-red-500" : "text-gray-100"} text-xl `} type='button'/></button>
       </div>
       <div className='flex justify-between items-center mt-1 '>
       <img alt='WeatherIcon' src={iconUrl} className='w-16 h-16' />
