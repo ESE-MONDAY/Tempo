@@ -6,6 +6,7 @@ const urlsToCache =[
     "./manifest.json",
     "./android-chrome-192x192.png",
     "./",
+    ".header-bg.png",
     "./favicon.ico",
     "./static/js/main.4d5113ea.js",
     "./static/js/bundle.js",
@@ -61,11 +62,11 @@ self.addEventListener('fetch', function (evt) {
 
     if (!navigator.onLine) {
         console.log("offline");
-        if (evt.request.url === "http://localhost:3000/static/js/main.chunk.js") {
+        if (evt.request.url === "https://tempo-gules.vercel.app/static/js/main.chunk.js") {
             evt.waitUntil(
                 this.registration.showNotification("modeNet", {
                     body: "Offline",
-                    icon: "http://localhost:3000/android-chrome-192x192.png",
+                    icon: "https://tempo-gules.vercel.app/android-chrome-192x192.png",
                 })
             );
         }
