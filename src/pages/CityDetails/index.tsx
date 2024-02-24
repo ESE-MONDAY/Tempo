@@ -188,7 +188,7 @@ const CityDetails = () => {
           <p className='font-bold text-xl  text-gray-700 '>Population: {weatherForecast.population} </p>
           
         </div>
-        <div className='col-span-1 sm:col-span-2 h-[350px]  py-8 px-1  '>
+        <div className='col-span-1 sm:col-span-2 h-[350px]  py-8 px-1'>
         <h2 className='text-center font-semibold text-gray-700 text-xl '>5 days weather Forecast (3 hours Interval)</h2>
         <BarChartComponent data={dataList} />
         </div>
