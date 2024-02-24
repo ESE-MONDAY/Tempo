@@ -80,7 +80,7 @@ const SearchPage = () => {
     <div className=' flex flex-col gap-4  py-8 px-1 lg:px-4  mt-8 '>
      
       <div className='w-full grid grid-cols-1 sm:grid-cols-3 gap-4'>
-        <div className='col-span-1 py-8 px-1 lg:px-4 flex flex-col gap-4  items-center justify-center  bg-white rounded-xl shadow-md'>
+        <div className='col-span-1 py-8 px-1 lg:px-4 flex flex-col gap-4  items-center justify-center  '>
         <img alt='weather' src={iconUrl} className=''/>
           <p className='text-3xl font-bold text-center text-gray-700'>{weatherForecast.name} <sup className='bg-orange-500 text-xl text-white rounded-full p-2'>{weatherForecast.country}</sup></p>
           <p className='font-bold text-5xl  text-gray-700 '>{Math.round(weatherData.temperature)} <sup className='text-4xl'>°C</sup></p>  
@@ -88,7 +88,7 @@ const SearchPage = () => {
           <p className='font-bold text-xl  text-gray-700 '>Population: {weatherForecast.population} </p>
           
         </div>
-        <div className='col-span-1 sm:col-span-2 h-[350px] bg-white rounded-md shadow-md py-8 px-1  '>
+        <div className='col-span-1 sm:col-span-2 h-[350px] py-8 px-1  '>
         <h2 className='text-center font-semibold text-gray-700 text-xl '>5 days weather Forecast (3 hours Interval)</h2>
         <BarChartComponent data={dataList} />
         </div>
