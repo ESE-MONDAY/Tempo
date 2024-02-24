@@ -8,6 +8,8 @@ import { formatDateString, formatSunriseSunset } from '../../utils/DateFormatter
 import LineChartComponent from '../../components/LineChart';
 import BarChartComponent from '../../components/BarChart';
 import { SunRise, SunSet } from '../../components/shared/Icons';
+import SearchBar from '../../components/shared/SearchBar';
+import Navbar from '../../components/shared/Navbar';
 
 
 
@@ -59,7 +61,18 @@ const SearchPage = () => {
   }));
   return (
   
-<div className='flex flex-col flex-grow w-full p-4 rounded-lg bg-blue-200 '>
+<div className='flex flex-col flex-grow w-full rounded-lg bg-white'>
+  <Navbar />
+<div className='bg-[#F2F2F2] flex sm:hidden'>
+          <div className='max-w-[800px]  flex  mx-auto w-full '>
+            <div className=' w-full p-4'>
+            <SearchBar />
+
+            </div>
+           
+          </div>
+        
+        </div>
   <div className='max-w-[1000px] w-full  mx-auto'>
   {
   forecastDetails && weatherForecast && weatherData && (

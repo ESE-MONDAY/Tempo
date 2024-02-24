@@ -34,7 +34,7 @@ export const formatDateString = (dateString: string): string => {
     const sunriseTime = sunriseLocalTime.toLocaleTimeString('en-US', options);
     const sunsetTime = sunsetLocalTime.toLocaleTimeString('en-US', options);
   
-    // Return the formatted times
+
     return {
       sunrise: sunriseTime,
       sunset: sunsetTime
@@ -43,4 +43,5 @@ export const formatDateString = (dateString: string): string => {
   
 
   
+
   

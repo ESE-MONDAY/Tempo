@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { RiSearchLine } from 'react-icons/ri';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 
@@ -41,20 +40,21 @@ const SearchBar = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex items-center border border-purple-400 rounded-full px-4 ">
+      <form onSubmit={handleSubmit} className="flex items-center  rounded-sm  w-full ">
         <input
           type="text"
           value={query}
           onChange={handleInputChange}
           placeholder="Lagos, NG"
-          className="px-2 py-2 mr-2 flex-grow focus:outline-none bg-transparent"
+          className="px-2 py-2 flex-grow rounded-l-sm focus:outline-none bg-white"
         />
-        <RiSearchLine className="text-gray-400" size={16} />
+        <button type='submit' className='text-gray-100 bg-[#48484A] px-4 rounded-r-sm py-2'>Search</button>
+      
       </form>
       {query && suggestions.length > 0 && (
-        <ul className='absolute bg-white mt-4 flex flex-col gap-2'>
+        <ul className='absolute bg-white mt-4 flex flex-col gap-2  flex-grow '>
           {suggestions.map((suggestion:any) => (
-            <li className='border-b-[1px] border-b-red-400' key={suggestion.geonameId}>
+            <li className='border-b-[1px]  text-gray-700 px-8 py-1' key={suggestion.geonameId}>
                <button onClick={() => handleClick(suggestion.name)}>{suggestion.name}</button>
              </li>
           ))}

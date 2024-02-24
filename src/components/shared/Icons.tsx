@@ -16,3 +16,4 @@ export const SunSet = ({ width = "24", height = "24" }) => {
       </svg>
     );
   };
+

@@ -130,7 +130,13 @@ export const fetchLargestCitiesWithWeather = async (): Promise<WeatherData[]> =>
         })
         .catch((error) => {
           toast.error(`Error fetching weather info for ${city.name}: ${error}`);
-          return null;
+          const existingData = getWeatherDataFromLocalStorage();
+          const cachedData = existingData.find((data) => data.city === city.name);
+          if (cachedData) {
+            return cachedData;
+          } else {
+            return null;
+          }
         });
 
       weatherInfos.push(weatherInfoPromise);

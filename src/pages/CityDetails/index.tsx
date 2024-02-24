@@ -9,6 +9,9 @@ import { formatDateString, formatSunriseSunset } from '../../utils/DateFormatter
 import LineChartComponent from '../../components/LineChart';
 import BarChartComponent from '../../components/BarChart';
 import { SunRise, SunSet } from '../../components/shared/Icons';
+import Navbar from '../../components/shared/Navbar';
+import SearchBar from '../../components/shared/SearchBar';
+
 
 
 
@@ -19,7 +22,7 @@ const CityDetails = () => {
   const [newNote, setNewNote] = useState('');
   const [ showForm, setShowForm] = useState(false)
 
-  const {citiesWithWeather, error} = useSelector((state: RootState) => state.largestCity)
+  const {citiesWithWeather } = useSelector((state: RootState) => state.largestCity)
   const { forecastDetails, weatherForecast, weatherIcon} = useSelector((state: RootState) => state.cityWeatherForecast)
   const sunRise = weatherForecast?.sunrise
   const sunSet = weatherForecast?.sunset
@@ -31,7 +34,7 @@ const CityDetails = () => {
   const baseUrl = 'https://openweathermap.org/img/wn/';
   const iconUrl = `${baseUrl}${weatherIcon}@2x.png`;
   const currentTime = new Date().toLocaleTimeString();
-
+  
 
 
   useEffect(() => {
@@ -90,13 +93,24 @@ const CityDetails = () => {
 }
 
   return (
-    <div className='flex flex-col w-full sm:px-16 p-4 bg-blue-200 h-full'> 
-      <div className='w-full max-w-[1000px] mx-auto flex flex-col sm:flex-row gap-4 flex-grow'> 
-      {weatherData ? (
+    <div className='flex flex-col w-full  bg-white h-full'> 
+    <Navbar />
+    <div className='bg-[#F2F2F2] flex sm:hidden'>
+          <div className='max-w-[800px]  flex  mx-auto w-full '>
+            <div className=' w-full p-4'>
+            <SearchBar />
+
+            </div>
+           
+          </div>
+        
+        </div>
+    <div className='bg-[#f2f2f2] p-4 sm:p-8'>
+      {weatherData && (
         <>
           
-          <div className="flex flex-col w-full">
-        <h1 className="text-3xl font-bold mb-4">{cityName} </h1>
+          <div className="flex flex-col w-full max-w-[1000px] mx-auto">
+        <h1 className="text-3xl font-bold mb-4 text-gray-700">{cityName}, {weatherForecast?.country} </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="flex flex-col">
             <p className="text-lg font-semibold">Description:</p>
@@ -152,9 +166,11 @@ const CityDetails = () => {
            
             </div>
         </>
-      ) : (
-        <p>{error}</p>
-      )}
+      ) }
+    </div>
+
+      <div className='w-full max-w-[1000px] mx-auto flex flex-col sm:flex-row gap-4 flex-grow'> 
+    
         
       </div>
       <div className='max-w-[1000px] w-full  mx-auto'>
@@ -180,8 +196,9 @@ const CityDetails = () => {
       </div>
    
   </div>
-     <div className='h-[350px]  flex flex-col gap-4 w-full  bg-white py-8 px-1 lg:px-4 rounded-md mt-8 '>
+     <div className='h-[350px]  flex flex-col gap-4 w-full  bg-white py-8 px-1 lg:px-4 rounded-md mt-8  '>
       <h2 className='text-center font-semibold text-gray-700 text-xl '>5 days weather Forecast (3 hours Interval)</h2>
+    
     <LineChartComponent data={data} />
   </div>
   

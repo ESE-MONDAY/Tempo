@@ -53,7 +53,9 @@ const LargestCityWeatherInfo: React.FC<CityWeatherInfoProps> = ({ cityInfo }) =>
   return (
     <div className='rounded-lg bg-gray-700 shadow-md p-4 min-w-[200px] mt-8 text-gray-100 '>
       <div className='flex justify-end items-center'>
-        <button onClick={handleAddFavorite}><GoHeartFill className={`${isCityLiked(cityInfo.city, cities)  ? "text-red-500" : "text-gray-100"} text-xl `} type='button'/></button>
+        <button aria-label="Like Button" onClick={handleAddFavorite}>
+          
+          <GoHeartFill className={`${isCityLiked(cityInfo.city, cities)  ? "text-red-500" : "text-gray-100"} text-xl `} type='button'/></button>
       </div>
       <div className='flex justify-between items-center mt-1 '>
       <img alt='WeatherIcon' src={iconUrl} className='w-16 h-16' />
