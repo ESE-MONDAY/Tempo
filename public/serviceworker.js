@@ -1,7 +1,18 @@
 const CACHE_NAME = "version 1"
 
 const urlsToCache =[
-    "index.html", "offline.html"
+    "index.html", 
+    "offline.html",
+    "./manifest.json",
+    "./android-chrome-192x192.png",
+    "./",
+    "./favicon.ico",
+    "./static/js/main.4d5113ea.js",
+    "./static/js/bundle.js",
+    "./static/css/main.073c9b0a.css",
+    "/city-list",
+    "/city-details",
+    "/search"
 ]
 
 const self = this
@@ -19,16 +30,60 @@ self.addEventListener("install", (event) =>{
 
 
 //Listen for Request
-self.addEventListener("fetch", (event) =>{
-    event.respondWith(
-        caches.match(event.request)
-        .then(() => {
-            return fetch(event.request)
-            .catch(() =>  caches.match('offline.html'))
-        })
-    )
+// self.addEventListener("fetch", (event) =>{
+//     event.respondWith(
+//         caches.match(event.request)
+//         .then(() => {
+//             return fetch(event.request)
+//             .catch(() =>  caches.match('offline.html'))
+//         })
+//     )
 
+// });
+function fromNetwork(request, timeout) {
+    return new Promise(function (fulfill, reject) {
+        var timeoutId = setTimeout(reject, timeout);
+        fetch(request).then(function (response) {
+            clearTimeout(timeoutId);
+            fulfill(response);
+        }, reject);
+    });
+}
+function fromCache(request) {
+    return caches.open(CACHE_NAME).then(function (cache) {
+        return cache.match(request).then(function (matching) {
+            return matching || Promise.reject('no-match');
+        });
+    });
+}
+
+self.addEventListener('fetch', function (evt) {
+
+    if (!navigator.onLine) {
+        console.log("offline");
+        if (evt.request.url === "http://localhost:3000/static/js/main.chunk.js") {
+            evt.waitUntil(
+                this.registration.showNotification("modeNet", {
+                    body: "Offline",
+                    icon: "http://localhost:3000/android-chrome-192x192.png",
+                })
+            );
+        }
+    }
+
+     evt.respondWith(
+        fromNetwork(evt.request, 400).catch(() => fromCache(evt.request))
+    );
+    evt.waitUntil(update(evt.request));
 });
+
+function update(request) {
+    return caches.open(CACHE_NAME).then(function (cache) {
+        return fetch(request).then(function (response) {
+            return cache.put(request, response);
+        });
+    });
+}
 
 
 
