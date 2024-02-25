@@ -52,7 +52,7 @@
 
 
 
-console.warn("service worker is working")
+
 const CACHE_NAME = "version1"
 const self = this
 //Installation
