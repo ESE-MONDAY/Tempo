@@ -57,30 +57,28 @@ const CACHE_NAME = "version1"
 const self = this
 //Installation
 
-const urlsToCache =[    
-    "/static/js/bundle.js",
-    "/static/js/main.chunk.js",
-    "/static/js/0.chunk.js",
-    "/city-list",
-    "/city-details/",
-    "/search",
-    "/favicon.ico",
-    "/manifest.json",
-    "/winter6.jpg",
-    "/inpage.js",
-    "/injectedScript.bundle.js",
-    "/injected.bundle.js",
-    "/android-chrome-192x192.png",
-    "/index.html",
-    "/"
-]
-
 self.addEventListener("install", (event) =>{
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) =>{
             console.log("Cache Open")
-            return cache.addAll(urlsToCache)
+            return cache.addAll([    
+                "/static/js/bundle.js",
+                "/static/js/main.chunk.js",
+                "/static/js/0.chunk.js",
+                "/city-list",
+                "/city-details/",
+                "/search",
+                "/favicon.ico",
+                "/manifest.json",
+                "/winter6.jpg",
+                "/inpage.js",
+                "/injectedScript.bundle.js",
+                "/injected.bundle.js",
+                "/android-chrome-192x192.png",
+                "/index.html",
+                "/"
+            ])
         })
     )
 });

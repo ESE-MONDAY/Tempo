@@ -1,6 +1,7 @@
 {
     "short_name" : "Tempo Weather App",
     "name": "Tempo - Fetch Weather Reports on the go",
+    "description": "Get your weather forecast with on click on the go",
     "icons" : [
         {
             "src": "./android-chrome-192x192.png",
@@ -32,6 +33,7 @@
     ],
     "start_url": ".",
     "display": "standalone",
+    "categories": ["weather", "education", "media", "utilities"],
     "theme_color": "#000000",
     "background_color": "#ffffff"
 }
