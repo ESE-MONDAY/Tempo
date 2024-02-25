@@ -67,8 +67,6 @@ self.addEventListener("install", (event) =>{
                 "/static/js/main.chunk.js",
                 "/static/js/0.chunk.js",
                 "/city-list",
-                "/city-details/",
-                "/search",
                 "/favicon.ico",
                 "/manifest.json",
                 "/winter6.jpg",
