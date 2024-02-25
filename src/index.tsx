@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './states/store';
+import { serviceWorkerDev } from './serviceWorkerDev';
 
 
 
@@ -24,6 +25,6 @@ root.render(
 
 
 
-
+serviceWorkerDev()
 // Measure performance of your app
 reportWebVitals();
